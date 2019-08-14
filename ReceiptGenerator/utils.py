@@ -5,6 +5,11 @@ import datetime
 import time
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
+"""
+Load the words file and put it in an arraylist
+"""
+act_word_list = open("words.txt","r").read().split("\n")
+
 
 def strTimeProp(start, end, format, prop):
     """Get a time at a proportion of a range of two formatted times.
@@ -166,6 +171,13 @@ def crnn_tax():
     else:
         return str(tax) + str(sep) + str(val)
 
+def randomWordLine():
+    num_words = random.randint(0,2)
+    wLine =""
+    for i in range(num_words):
+        rand_word_idx = random.randint(0,len(act_word_list))
+        wLine+=" "+act_word_list[rand_word_idx]
+    return wLine.strip()
 
 @padding
 def crnn_line_text(typ):
@@ -199,6 +211,8 @@ def crnn_line_text(typ):
         return crnn_items_prices_right()
     elif typ == 'priceL':
         return crnn_items_prices_left()
+    elif typ == 'act_word':
+        return randomWordLine()
 
 
 def surrounded_text(text):
