@@ -40,13 +40,13 @@ def randomDate(start, end, prop):
 def create_config():
     config = {
         'seperator': random.choice(['-', '_', '*', '.',',',' ','/',':']),
-        'num_col': random.choice(range(20, 100)),
+        'num_col': random.choice(range(20, 60)),
         'item_space_count': random.choice(range(1, 4)),
         'break_long_words': random.choice([True, True, False, False]),
         'has_table_header': random.choice([True, False]),
         'distort_val': random.choice(range(2, 3)),
-        'margin_hori': random.choice(range(40, 80)),
-        'margin_vert': random.choice(range(40, 100)),
+        'margin_hori': random.choice(range(20,40)),
+        'margin_vert': random.choice(range(40, 50)),
         'dist_name_price': random.choice(range(2, 6)),
         'item_name_uppercase_policy': random.choice(['upper', 'title']),
         'currency_mark': random.choice(['$']),
@@ -374,11 +374,11 @@ def create_crnn_sample(typ):
 
 
 def create_noised_crnn_sample(count_each):
-    types = ['line', 'date' , 'word', 'word_column', 'word_bracket', 'tax', 'priceL','priceR','totL','totR','price_left','price_right','percentage','float','int']
-    root_directory = 'results_test/'
+    types = ['line','act_word', 'date' , 'word', 'word_column', 'word_bracket', 'tax', 'priceL','priceR','totL','totR','price_left','price_right','percentage','float','int']
+    root_directory = 'results_test4/'
     for typ in types:
         for i in range(count_each):
-            directory = 'results_test/{}_{}/'.format(typ, i)
+            directory = 'results_test4/{}_{}/'.format(typ, i)
             if not os.path.exists(directory):
                 os.makedirs(directory)
             text = crnn_line_text(typ)
